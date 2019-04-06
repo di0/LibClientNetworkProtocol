@@ -1,5 +1,5 @@
 # LibClientNetworkProtocol
-Creates a connection remote with endpoint using abstractedly a protocol communication.
+Creates a connection remote with endpoint using abstractedly a communication protocol remote.
 
 #### Choosing between Protocols
 
