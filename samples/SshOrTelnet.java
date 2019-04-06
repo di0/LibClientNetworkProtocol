@@ -7,10 +7,10 @@ import com.lognull.libnetwork.notify.ClientCallBack;
 import com.lognull.libnetwork.producer.EndpointInfo;
 import com.lognull.libnetwork.protocol.Protocol;
 
-public class Main implements ClientCallBack
+public class SshOrTelnet implements ClientCallBack
 {
 	private static final LoggerHelper LOG = LoggerHelper
-			.thisClass( Main.class );
+			.thisClass( SshOrTelnet.class );
 
 	// Override ClientCallBack interface.
 	public void onResponse( String message )
@@ -50,7 +50,7 @@ public class Main implements ClientCallBack
 	{
 		try
 		{
-			new Main().createClient();
+			new SshOrTelnet().createClient();
 		}
 		catch( ClientException ce )
 		{
