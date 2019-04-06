@@ -8,26 +8,27 @@ import com.lognull.libnetwork.producer.EndpointInfo;
 import com.lognull.libnetwork.protocol.Protocol;
 import com.lognull.libnetwork.utility.extra.Scp;
 import com.lognull.libnetwork.utility.extra.ScpClient;
+import com.lognull.libnetwork.utility.extra.ScpNotify;
 
-public class ScpTest implements ClientCallBack
+public class ScpTest
 {
 	private static final LoggerHelper LOG = LoggerHelper
-			.thisClass( Main.class );
+			.thisClass( ScpTest.class );
 
 	static int total = 0;
 	static int aux = 0;
-	Progress bar;
+	static Progress bar;
 
 	public void createClient() throws ClientException
 	{
-		bar = Progresso.init();
+		bar = Progress.init();
 
 		// We create the information about the endpoint that our
 		// client will connect.
 		EndpointInfo endpoint = new EndpointInfo();
 		endpoint.setIp( "192.168.1.0" );
 		endpoint.setPort( 22 );
-		endpoint.setProtocol( Protocol.SSH );
+		endpoint.setProtocol( Protocol.SSH ); // We can use Protocol.TELNET and the port 23. 
 
 		// We create the endpoint credential whose our client
 		// will connect.
@@ -35,28 +36,38 @@ public class ScpTest implements ClientCallBack
 		credential.setUser( "root" );
 		credential.setPassword( "foo123" );
 		endpoint.setCredential( credential );
-		ScpClient scp = new Scp( endpoint, this );
+		ScpClient scp = new Scp( endpoint, new HandlerScpNotify() );
 		System.out.println( "Starting copy..." );
-		scp.copyFromRemote( "/remote/tmp/foo.txt", "/local/tmp/" );
+		scp.copyFromRemote( "/from_remote/tmp/foo.txt", "/to_local/tmp/" );
 		System.out.println( "\nend copy..." );
+		scp.close();
 	}
 
-	public void onResponse( String response )
-	{
-		if ( response != null )
+	private static class HandlerScpNotify implements ScpNotify
+        {
+		/** Represents the total size already transfered. */
+		private static int total;
+
+		/**
+		 * Callback invoked to set the size of the target
+		 * download.
+		 */
+		@Override
+		public void onTargetSize( long targetSize )
 		{
-			if ( response.contains( "Filesize" ) ) {
-				total = Integer.valueOf(
-						response.split( ":" )[ 1 ] );
-			}
-			if ( response.contains( "Remaining" ) )
-			{
-				int restante = Integer.valueOf(
-						response.split( ":" )[ 1 ] );
-				bar.update( restante, total );
-			}
+			total = (int)targetSize;
 		}
-	}
+
+		/**
+		 * Callback invoked while a transfer is still
+		 * remaining.
+		 */
+		@Override
+		public void onRemaining( long remaining )
+		{
+			bar.update( (int) remaining, total );
+		}
+        }
 
 	public static void main( String[] args )
 	{
@@ -66,7 +77,7 @@ public class ScpTest implements ClientCallBack
 		}
 		catch( ClientException ce )
 		{
-			LOG.error( "An error occurred while attempting to
+			LOG.error( "An error occurred while attempting to"
 					+ " create client >> ", ce );
 		}
 	}

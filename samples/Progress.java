@@ -10,7 +10,7 @@ public class Progress
 
 	public static Progress init()
 	{
-	        return new Progresso();
+	        return new Progress();
 	}
 
 	public void update( int done, int total )
@@ -28,7 +28,7 @@ public class Progress
 			while ( extrachars-- > 0 )
 				sb.append( '#' );
 
-			System.out.printf( format, percent, progress,
+			System.out.printf( format, percent, sb,
 				workchars[ percent % workchars.length ] );
 
 			if ( done == total )
