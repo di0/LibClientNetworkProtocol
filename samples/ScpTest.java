@@ -28,7 +28,6 @@ public class ScpTest
 		EndpointInfo endpoint = new EndpointInfo();
 		endpoint.setIp( "192.168.1.0" );
 		endpoint.setPort( 22 );
-		endpoint.setProtocol( Protocol.SSH ); // We can use Protocol.TELNET and the port 23. 
 
 		// We create the endpoint credential whose our client
 		// will connect.
