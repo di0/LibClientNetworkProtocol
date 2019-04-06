@@ -95,7 +95,7 @@ public class ClientWrapper
 	public void
 	close() throws ClientException
 	{
-		client.disconnect();
+		client.close();
 	}
 
 	/**

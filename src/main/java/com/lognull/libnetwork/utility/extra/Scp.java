@@ -11,6 +11,7 @@ import com.jcraft.jsch.JSchException;
 import com.lognull.libnetwork.exception.ClientException;
 import com.lognull.libnetwork.helper.Error;
 import com.lognull.libnetwork.producer.EndpointInfo;
+import com.lognull.libnetwork.protocol.Protocol;
 import com.lognull.libnetwork.protocol.Ssh;
 
 /**
@@ -46,6 +47,9 @@ public class Scp extends Ssh implements ScpClient
 	Scp( EndpointInfo endpoint ) throws ClientException
 	{
 		super( endpoint );
+
+		// We always use SCP through SSH protocol
+		endpoint.setProtocol( Protocol.SSH );
 	}
 
 	/**
@@ -119,9 +123,9 @@ public class Scp extends Ssh implements ScpClient
 	}
 
 	public void
-	disconnect()
+	close()
 	{
-		super.disconnect();
+		super.close();
 	}
 
 	private void

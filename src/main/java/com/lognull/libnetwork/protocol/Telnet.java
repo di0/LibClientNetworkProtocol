@@ -134,10 +134,10 @@ public class Telnet implements Client
 	}
 
 	/**
-	 * @see Client#disconnect()
+	 * @see Client#close()
 	 */
 	public void
-	disconnect() throws ClientException 
+	close() throws ClientException
 	{
 		try
 		{

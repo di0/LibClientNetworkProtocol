@@ -55,12 +55,12 @@ public class SshClient implements Client
 	}
 
 	/**
-	 * @see Client#disconnect()
+	 * @see Client#close()
 	 */
 	public void
-	disconnect() throws ClientException
+	close() throws ClientException
 	{
-		ssh.disconnect();
+		ssh.close();
 	}
 
 	/**

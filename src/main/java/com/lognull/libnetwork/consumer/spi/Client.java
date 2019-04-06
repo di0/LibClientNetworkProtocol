@@ -39,7 +39,7 @@ public interface Client
 	 *             If client cannot disconnect to endpoint
 	 */
 	public void
-	disconnect() throws ClientException;
+	close() throws ClientException;
 
 	/**
 	 * Sends message to endpoint.

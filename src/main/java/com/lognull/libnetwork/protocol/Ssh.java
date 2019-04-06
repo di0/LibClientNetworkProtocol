@@ -123,10 +123,10 @@ public class Ssh implements Client
 	}
 
 	/**
-	 * @see Client#disconnect()
+	 * @see Client#close()
 	 */
 	public void
-	disconnect()
+	close()
 	{
 		if ( channel != null )
 			channel.disconnect();

@@ -55,12 +55,12 @@ public class TelnetClient implements Client
 	}
 
 	/**
-	 * @see Client#disconnect()
+	 * @see Client#close()
 	 */
 	public void
-	disconnect() throws ClientException
+	close() throws ClientException
 	{
-		telnet.disconnect();
+		telnet.close();
 	}
 
 	/**

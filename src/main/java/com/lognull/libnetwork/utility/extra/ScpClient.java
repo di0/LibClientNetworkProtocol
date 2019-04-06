@@ -25,9 +25,15 @@ public interface ScpClient
 	public void
 	copyFromRemote( String from, String to ) throws ClientException;
 
+	/**
+	 * Connects on endpoint.
+	 */
 	public void
 	connect();
 
+	/**
+	 * Closes the connection with endpoint.
+	 */
 	public void
-	disconnect();
+	close();
 }
