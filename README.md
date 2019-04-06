@@ -61,7 +61,7 @@ client.send( "grep -RHin \"word\" /tmp/Foo.txt" );
 // and so on ...
 ```
 
-So, you must close the connection this way:
+So, later you must close the connection this way:
 ```java
 client.close()
 ```
@@ -91,7 +91,7 @@ ScpClient scp = new Scp( endpoint, this );
 ```
 Where in this case, the **"this"** reference implements the **ScpNotify** interface.
 
-So, you must close the connection this way:
+So, later you must close the connection this way:
 ```java
 scp.close()
 ```
