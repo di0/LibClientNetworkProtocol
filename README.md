@@ -8,7 +8,7 @@ protocol.
 
 By example:
 
-Using **SSH** Protocol, you can do something like it:
+Using ***SSH*** Protocol, you can do something like it:
 ```java
 EndpointInfo endpoint = new EndpointInfo();
 endpoint.setIp( "192.168.1.0" );
@@ -18,10 +18,17 @@ endpoint.setProtocol( Protocol.SSH );
 
 In this case, you do not need to specify the **port 22**, by default we assume that the port is 22.
 
-Or, **TELNET** Protocol:
+Or, ***TELNET*** Protocol:
 ```java
 endpoint.setProtocol( Protocol.TELNET );
 ```
+specifying in this case, the **port 23**:
+
+```java
+endpoint.setPort( 23 );
+```
+Here also, if you not specific the port, will be used the port 23 by default.
+
 Once choose the protocol, you might authenticate on endpoint, using **EndpointInfo.Credential**
 utility, specifing the corresponding information. By example:
 ```java
@@ -59,7 +66,7 @@ For more details, look into ***samples*** directory, by **SshOrTelnet.java** cla
 This library also provides an extra functionally, through Secure Copy Protocol(SCP). The SCP class is the
 responsible by provide this goal.
 
-The **SCP** class is an extension of the **SSH** class, so we just use the **EndpointInfo** and **EndpointInfo.Credential** as we done early in SSH connection demo. Once created the endpoint info and credential respectively, we can do this:
+The ***SCP*** class is an extension of the **SSH** class, so we just use the **EndpointInfo** and **EndpointInfo.Credential** as we done early in SSH connection demo. Once created the endpoint info and credential respectively, we can do this:
 ```java
 ScpClient scp = new Scp( endpoint );
 ```
