@@ -66,11 +66,12 @@ For more details, look into ***samples*** directory, by **SshOrTelnet.java** cla
 This library also provides an extra functionally, through Secure Copy Protocol(SCP). The SCP class is the
 responsible by provide this goal.
 
-The ***SCP*** class is an extension of the **SSH** class, so we just use the **EndpointInfo** and **EndpointInfo.Credential** as we done early in SSH connection demo. Once created the endpoint info and credential respectively, we can do this:
+The ***SCP*** class is an extension of the **SSH** class, so we just use the **EndpointInfo** and **EndpointInfo.Credential** as we done early in SSH connection demo. Once created respectively the endpoint info and their corresponding
+credential, we can do this:
 ```java
 ScpClient scp = new Scp( endpoint );
 ```
-If you desired receive the response, you can register a callback like we done in SSH example, implementing
+If you desire receive the response, you can register a callback like we done in SSH example, implementing
 the ClientCallBack interface and consume the message response injected on method onResponse of this
 interface. But in this case, you must use the Scp( EndpointInfo endpoint, ScpNotify scpNotify ) constructor.
 i.e:
