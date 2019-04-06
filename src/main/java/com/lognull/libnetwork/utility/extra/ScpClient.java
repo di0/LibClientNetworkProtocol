@@ -17,8 +17,6 @@ public interface ScpClient
 	 *            source of something from remote
 	 * @param to
 	 *            destiny where something will be copied
-	 * @param nameFromSomething
-	 *            final name of the something
 	 * @throws ClientException
 	 *             if client is not availaible by some reason
 	 */
