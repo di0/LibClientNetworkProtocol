@@ -82,12 +82,13 @@ ScpClient scp = new Scp( endpoint );
 ```
 
 **Note:**<br>
-**_______**
+**_____________________**
 
 How we always use SCP through SSH protocol, you do not need specify the following snippet when we are using SCP functionality:
 ```java
 endpoint.setProtocol( Protocol.SSH ); // It will be ignored if you specify with SCP.
 ```
+**_____________________**
 
 To go along get the processing of the copy, you can register an observer implementing the **ScpNotify** interface, abstracting the methods **onTargetSize** and **onRemaining** where onTargetSize method returns the total size of the target and the onRemaining method returns the remaining size to complete.
 
