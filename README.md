@@ -21,29 +21,29 @@ endpoint.setProtocol( Protocol.TELNET );
 
 Once choose the protocol, you might authenticate on endpoint, using EndpointInfo.Credential utility,
 specifing the need information. By example:
-
+```java
 EndpointInfo.Credential credential = endpoint.new Credential();
 credential.setUser( "foo" );
 credential.setPassword( "12345" );
-
+```
 So, we set the credential to endpoint:
-
+```java
 endpoint.setCredential( credential );
-
+```
 To create the client to the endpoint target, we can do like this:
-
+```java
 ClientWrapper client = new ClientWrapper( ClientFactory
               .createByEndpoint( endpoint ) );
-
+```
 Once created, we connect to the endpoint:
-
+```java
 client.connect();
-
+```
 and finally we can send the message to the remote target:
-
+```java
 client.send( "ls -la /tmp/" );
 client.send( "grep -RHin \"word\" /tmp/Foo.txt" );
-
+```
 and so on...
 
 If you desire receive the response, you must register a callback through ClientCallBack interface and
@@ -59,15 +59,17 @@ is the responsible by provide this goal.
 The SCP class is an extension of the SSH class, so we just use the EndpointInfo and EndpointInfo.Credential
 as we done early in SSH connection demo. Once created the endpoint info and credential respectively, we can
 do this:
-
+```java
 ScpClient scp = new Scp( endpoint );
+```
 
 If you desired receive the response, you can register a callback like we done in SSH example, implementing the
 ClientCallBack interface and consume the message response injected on method onResponse of this interface.
 But in this case, you must use the Scp( EndpointInfo endpoint, ScpNotify scpNotify ) constructor. I.E:
-
+```java
 ScpClient scp = new Scp( endpoint, this );
+```
 
-Where in this case, the "this" reference implements the ClientCallBack interface.
+Where in this case, the **"this"** reference implements the ClientCallBack interface.
 
 For more details, look into samples directory, the ScpTest class.
