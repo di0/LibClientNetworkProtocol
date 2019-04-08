@@ -90,7 +90,7 @@ public class Scp extends Ssh implements ScpClient
 		try
 		{
 			channel = session.openChannel( "exec" );
-			( (ChannelExec) channel).setCommand( "scp -r -f " + from );
+			( (ChannelExec) channel ).setCommand( "scp -p -r -f " + from );
 			channel.setInputStream( null );
 			( (ChannelExec) channel ).setErrStream( System.err );
 			in = channel.getInputStream();
@@ -161,7 +161,8 @@ public class Scp extends Ssh implements ScpClient
 					if ( buf[0] == ' ' )
 						break;
 
-					filesize = filesize * 10L + (long)( buf[0] - '0' );
+					filesize = ( filesize * 10L 
+							+ (long)( buf[0] - '0' ) );
 				}
 
 				// We notify the client about size from file
@@ -180,7 +181,7 @@ public class Scp extends Ssh implements ScpClient
 				}
 
 				// send '\0'
-				buf[0] = 0;
+				buf[ 0 ] = 0;
 				out.write( buf, 0, 1 );
 				out.flush();
 
@@ -224,7 +225,8 @@ public class Scp extends Ssh implements ScpClient
 					fos.close();
 			}
 			catch( Exception ignored ){}
-			throw new ClientException( Error.ER_UNEXPECTED_ERROR + " : " + e.getMessage() );
+			throw new ClientException( Error.ER_UNEXPECTED_ERROR + " : "
+					+ e.getMessage() );
 		}
 	}
 
