@@ -15,7 +15,7 @@ public class SshOrTelnet implements ClientCallBack
 	// Override ClientCallBack interface.
 	public void onResponse( String message )
 	{
-		System.out.println( "Message received: " + message );
+		LOG.info( "Received message: " + message );
 	}
 
 	public void createClient() throws ClientException
