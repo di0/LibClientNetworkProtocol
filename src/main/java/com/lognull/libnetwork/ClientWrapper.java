@@ -7,13 +7,10 @@ import com.lognull.libnetwork.helper.LoggerHelper;
 import com.lognull.libnetwork.notify.ClientCallBack;
 
 /**
- * This class have as responsibility, managering a client specific, starting
- * their connections, sending their messages or receiving them. This class can
- * also if you prefer, delegate the response message to registered observer
- * callback entity.
- *
- * See the examples on directory sample to know how it works with callback
- * through this manager client.
+ * This class has as responsibility, managering a client specific, starting
+ * their connections, sending their messages or receiving them. This class
+ * can also if you desired, delegate the response message for observer
+ * callback entity here registered.
  *
  * @author Diogo Pinto <dio@lognull.com>
  * @since 1.0
