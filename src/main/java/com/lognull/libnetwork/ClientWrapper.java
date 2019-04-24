@@ -8,9 +8,10 @@ import com.lognull.libnetwork.notify.ClientCallBack;
 
 /**
  * This class have as responsibility, managering a client specific, starting
- * your connections, sending your messages or receiving them. This class can also
- * if you prefer, delegate the response message to registered callback entity.
- * 
+ * their connections, sending their messages or receiving them. This class can
+ * also if you prefer, delegate the response message to registered observer
+ * callback entity.
+ *
  * See the examples on directory sample to know how it works with callback
  * through this manager client.
  *
