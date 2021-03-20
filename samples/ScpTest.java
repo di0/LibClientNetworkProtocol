@@ -36,6 +36,7 @@ public class ScpTest
 		credential.setPassword( "foo123" );
 		endpoint.setCredential( credential );
 		ScpClient scp = new Scp( endpoint, new HandlerScpNotify() );
+		scp.connect();
 		LOG.info( "Starting copy..." );
 		scp.copyFromRemote( "/from_remote/tmp/foo.txt", "/to_local/tmp/" );
 		LOG.info( "\nend copy..." );
