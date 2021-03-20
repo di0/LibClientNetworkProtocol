@@ -90,7 +90,7 @@ public class Scp extends Ssh implements ScpClient
 		try
 		{
 			channel = session.openChannel( "exec" );
-			( (ChannelExec) channel ).setCommand( "scp -p -r -f " + from );
+			( (ChannelExec) channel ).setCommand( "scp -r -f " + from );
 			channel.setInputStream( null );
 			( (ChannelExec) channel ).setErrStream( System.err );
 			in = channel.getInputStream();
