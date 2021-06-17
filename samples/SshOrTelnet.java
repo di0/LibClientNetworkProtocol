@@ -15,7 +15,7 @@ public class SshOrTelnet implements ClientCallBack
 	// Override ClientCallBack interface.
 	public void onResponse( String message )
 	{
-		LOG.info( "Received message: " + message );
+		LOG.info( "Received message: \n" + message );
 	}
 
 	public void createClient() throws ClientException
@@ -39,7 +39,9 @@ public class SshOrTelnet implements ClientCallBack
 		ClientWrapper client = new ClientWrapper( ClientFactory
 				.createByEndpoint( endpoint ) );
 		client.registerCallBack( this );
+		LOG.debug( "Preparing to connect ..." );
 		client.connect();
+		LOG.debug( "Connected successfully ..." );
 		client.send( "grep -RHin \"word\" /tmp/Foo.txt" );
 		client.send( "/sbin/ifconfig -a" );
 		client.send( "ls -la /tmp/" );

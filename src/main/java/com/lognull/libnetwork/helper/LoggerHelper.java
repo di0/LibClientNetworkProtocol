@@ -1,6 +1,7 @@
 package com.lognull.libnetwork.helper;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * This class encapsulate the logger of the system.
@@ -20,7 +21,7 @@ public final class LoggerHelper
 		if ( "true".equalsIgnoreCase( debug ) )
 			systemDebugActive = true;
 
-		LoggerHelper.logger = Logger.getLogger( clazz );
+		LoggerHelper.logger = LogManager.getLogger( clazz );
 	}
 
 	public static LoggerHelper thisClass( Class<?> clazz )
